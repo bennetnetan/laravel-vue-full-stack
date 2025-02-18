@@ -135,6 +135,8 @@ import {
 } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { RouterLink, RouterView } from "vue-router";
+import axiosClient from "../axios";
+import router from "../router";
 
 const user = {
   name: "Tom Cook",
@@ -148,7 +150,9 @@ const navigation = [
 ];
 
 function logout() {
-  console.log("logout");
+  axiosClient.post("/logout").then((response) => {
+    router.push({ name: "Login" });
+  });
 }
 </script>
 
